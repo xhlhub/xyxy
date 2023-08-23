@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title></title>
+    <link rel="stylesheet" href="./css/photo.css" />
+    <style type="text/css">
+      #canvas {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-color: #000;
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg">
+    <audio id="audio" src="./music/1.mp3" autoplay></audio>
+    <div id="show" class="show">
+      <div class="box" id="box">
+        <img src="images/1.jpg" class="img1" />
+        <img src="images/2.jpg" class="img2" />
+        <img src="images/3.jpg" class="img3" />
+        <img src="images/4.jpg" class="img4" />
+        <img src="images/5.jpg" class="img5" />
+        <img src="images/6.jpg" class="img6" />
+        <img src="images/7.jpg" class="img7" />
+        <img src="images/8.jpg" class="img8" />
+        <img src="images/9.jpg" class="img9" />
+        <img src="images/10.jpg" class="img10" />
+      </div>
+    </div>
+  </body>
+  <script>
+    var body = document.body;
+    var box = document.getElementById("box");
+    var show = document.getElementById("show");
+    show.onmouseenter = function () {
+      box.style.backgroundImage = "url('./images/tou.jpg')";
+    };
+    show.onmouseout = function () {
+      box.style.backgroundImage = "";
+    };
+  </script>
+  <!-- music -->
+  <script>
+    (function () {
+      var src = ["./music/1.mp3", "./music/again.mp3"];
+      var index = 0;
+      var myAudio = document.getElementById("audio");
+      window.addEventListener("click", function () {
+        if (myAudio.paused) {
+          myAudio.play();
+        }
+      });
+      myAudio.addEventListener("ended", function () {
+        index++;
+        index = index === src.length ? 0 : index;
+        myAudio.src = src[index];
+      });
+    })();
+  </script>
+</html>
